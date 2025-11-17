@@ -1,0 +1,47 @@
+Here is what we have to solve.
+
+Driving Log 
+- Record trips (start/end odometer, purpose)
+- Fuel purchases (gallons, price, odo)
+- Reminders (service maintenance)
+
+---------------------------------------------------------
+
+What we must use.
+- Arrays
+  ~ At least one Array
+
+- At least two User Defined Function
+    - One function takes 1 argument
+    - One function returns (and is used) 1 value
+
+- Accepts and validates user input
+
+- Displays formatted and meaningful output
+
+- Uses a menu system, 3 options, must use char
+  selector (A, B, C)
+
+- Have a "Summary" option of a compilation of 
+  all your code
+
+- Use content we have only covered
+  ~ You can use 1 - 2 things, but explain and justify
+
+- Use best practices for
+  ~ Users (User friendly and valuable)
+  ~ Peers (Coding best practices)
+
+---------------------------------------------------------
+
+
+What does Recording Trips need to do?
+- 
+
+
+What does Fuel Purchases need to do?
+-
+
+
+What do Reminders need to do?
+-
