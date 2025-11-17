@@ -5,7 +5,7 @@ Driving Log
 - Fuel purchases (gallons, price, odo)
 - Reminders (service maintenance)
 
----------------------------------------------------------
+-----------------------------------------------
 
 What we must use.
 - Arrays
@@ -32,16 +32,26 @@ What we must use.
   ~ Users (User friendly and valuable)
   ~ Peers (Coding best practices)
 
----------------------------------------------------------
+-----------------------------------------------
 
 
 What does Recording Trips need to do?
-- 
+- Ask how many trips are there gonna be in total
+- Ask how many miles for the 1st, 2nd, and ect trips
 
 
 What does Fuel Purchases need to do?
--
+- Asks the price for fuel
 
 
 What do Reminders need to do?
--
+- Asks a bunch of questions?
+  ~ Ask if you have done an oil change
+  ~ Ask about tire's air
+  ~ Ask if you have a full tank
+
+What does Summary do?
+- Tell you about your total miles driven
+- Tell you how much this costed with the current gas cost
+- Tell you about the reminders
+  ~ What you need to do to have a good drive?
