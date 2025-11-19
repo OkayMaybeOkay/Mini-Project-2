@@ -1,19 +1,36 @@
+/* NameS: Tanya Orona, Yair Barraza
+* Date: 11/19/25
+* Program: Mini-Project Phase 1 Putting it all together!
+* Description: Driving log that takes in trips, fuel stops, asks reminders in a checklist,
+*              and outputs an analysis report.
+* Collaborators: N/A
+*/
+
 #include <stdio.h>
+
+// REQ 7: TOPIC NOT IN CLASS (COVERED IN ZYBOOKS)
+// JUSTIFICATION: USED IN ORDER TO CHECK THAT OPTIONS WERE DONE
+// BEFORE PRINTING SUMMARY
 #include <stdbool.h>
 
+// REQ 2.1: USER DEFINED FUNCTION
 double difference(double odoAfter, double odoBefore) {
     double milesDriven;
     milesDriven = odoAfter - odoBefore;
     return milesDriven;
 }
 
-double fuel_pur(double totalMiles, double Costofgas) {
-    double totalCost;
-    totalCost = totalMiles * Costofgas;
-    return totalCost;
+// REQ 2.2: USER DEFINED FUNCTION
+double avg_purTrip(double totalSomething, double tripAmount) {
+    double avgSomethingPerTrip;
+    avgSomethingPerTrip = totalSomething / tripAmount;
+    return avgSomethingPerTrip;
 }
 
+
 int main(void) {
+
+    // REQ 8: GOOD PRACTICE/MEANINGFUL NAMES
     char checklistAns[3];
     char userInput;
     int tripAmount = 0;
@@ -25,6 +42,14 @@ int main(void) {
     double mileSum = 0.0;
     double gasCost;
     double oneStopgascost;
+    const char* ChecklistRemind[3]={"Make sure to air up your tires!",
+                              "Make sure you change your oil!",
+                              "Make sure to fill up your gas tank!"
+                              };
+
+    // REQ 7: TOPIC NOT IN CLASS (COVERED IN ZYBOOKS)
+    // JUSTIFICATION: USED IN ORDER TO CHECK THAT OPTIONS WERE DONE
+    // BEFORE PRINTING SUMMARY
     bool didTrip = false;
     bool didFuel = false;
     bool didReminder = false;
@@ -32,11 +57,12 @@ int main(void) {
 
     do {
 
+        // REQ 5: MENU SYSTEM
         printf("Welcome to the Driving Log! Here are your menu options:\n");
         printf("a) Record Trips (Up to 100 trips!) \n");
         printf("b) Record Fuel Cost\n");
         printf("c) Answer Reminder Questions\n");
-        printf("d) Print an Analysis Report of your Answers\n");
+        printf("d) Print an Analysis Report of your Answers\n"); // REQ 6: SUMMARY OPTION
         printf("e) Exit / Restart\n\n");
         printf("Note: You must do all parts (except for e) to do part d. \n\n");
 
@@ -88,6 +114,7 @@ int main(void) {
                 mileSum = 0.0;
 
                 printf("A is your option\n\n");
+                //REQ 3: ACCEPTS/VALIDATES USER INPUT
 
                 printf("How many trips are you taking?: ");
                 scanf("%d", &tripAmount);
@@ -136,6 +163,7 @@ int main(void) {
 
                 }
 
+                // REQ 4: MEANINGFUL OUTPUT
                 printf("Total Miles Traveled: %.2lf\n\n", mileSum);
 
                 didTrip = true;
@@ -145,8 +173,9 @@ int main(void) {
             
             case 'b':
             case 'B': {
-                printf("How many times did you stop for fuel on your trip?: ");
+                printf("How many times did you stop for fuel on all your trips?: ");
                 scanf("%d", &fuelstops);
+                printf("\n");
 
                 while(fuelstops <= 0 || fuelstops > 100) 
                 {
@@ -158,15 +187,19 @@ int main(void) {
                 {
                     printf("How much did fuel stop #%d cost?: ", i+1);
                     scanf("%lf", &oneStopgascost);
+                    printf("\n");
                     
                     while(oneStopgascost < 0) 
                     {
-                        printf("Invalid entry, please enter a positive number");
+                        printf("Invalid entry, please enter a positive number.\n\n");
                         printf("How much did fuel stop #%d cost?: ", i+1);
                         scanf("%lf", &oneStopgascost);
+                        printf("\n");
                     }
+
                     gasCost += oneStopgascost;
-                    printf("Total fuel cost: $%.2lf\n\n", gasCost);
+                    //printf("Total fuel cost: $%.2lf\n\n", gasCost);
+
                 }
                
                 didFuel = true;
@@ -179,6 +212,7 @@ int main(void) {
 
                 printf("\n");
 
+                // REQ 1: 1D ARRAY
                 const char* Checklist[3]={"Did you fill the tires with Air?",
                                           "Did you change the oil?",
                                           "Do you have a full tank of gas?"
@@ -219,18 +253,26 @@ int main(void) {
             case 'd':
             case 'D': {
 
-                printf("Analysis report\n\n");
-                double totalCost = fuel_pur(mileSum, gasCost);
-                double avgMilesPerTrip = mileSum / tripAmount;
-                double costpermile = gasCost / tripAmount;
+                // REQ 4: MEANINGFUL OUTPUT
+                // REQ 6: SUMMARY
+                printf("Analysis report:\n\n");
                 printf("Total trips recorded: %d\n", tripAmount);
                 printf("Total miles traveled: %.2lf\n",mileSum);
-                printf("Average miles per trip: %.2lf\n", avgMilesPerTrip);
-                printf("Fuel cost per mile: %.4lf\n", costpermile);
-                printf("Total fuel cost: %.2lf\n", gasCost); 
-                printf("Total cost: %.2lf\n\n", totalCost);
-                
-                
+                printf("Average miles per trip: %.2lf\n", avg_purTrip(mileSum, tripAmount));
+                printf("Average fuel cost per trip: %.2lf\n", avg_purTrip(gasCost, tripAmount));
+                printf("Total cost: %.2lf\n\n", gasCost); 
+
+                for (i = 0; i < 3; i++) {
+
+                    if (checklistAns[i] == 'n' || checklistAns[i] == 'N') {
+
+                        printf("%s\n", ChecklistRemind[i]);
+
+                    }
+
+                }
+
+                printf("\n");
                 
                 break;
             
